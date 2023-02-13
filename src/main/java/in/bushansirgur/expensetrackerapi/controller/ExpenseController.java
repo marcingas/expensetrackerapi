@@ -2,6 +2,7 @@ package in.bushansirgur.expensetrackerapi.controller;
 
 import in.bushansirgur.expensetrackerapi.entity.Expense;
 import in.bushansirgur.expensetrackerapi.service.ExpenseService;
+import jakarta.validation.Valid;
 import org.hibernate.annotations.GeneratorType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -36,7 +37,7 @@ return  expenseService.getAllExpenses(page).toList();
     }
     @ResponseStatus(value= HttpStatus.CREATED)
     @PostMapping("/expenses")
-    public Expense saveExpenseDetails(@RequestBody Expense expense){
+    public Expense saveExpenseDetails(@Valid @RequestBody Expense expense){
        return expenseService.saveExpenseDetailes(expense);
     }
     @PutMapping("/expenses/{id}")

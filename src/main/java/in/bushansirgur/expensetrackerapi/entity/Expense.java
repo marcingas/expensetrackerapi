@@ -1,6 +1,8 @@
 package in.bushansirgur.expensetrackerapi.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,6 +12,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import java.math.BigDecimal;
 import java.sql.Date;
 import java.sql.Timestamp;
+
 
 @Data
 @AllArgsConstructor
@@ -21,6 +24,9 @@ public class Expense {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name= "expense_name")
+
+    @NotNull(message = "Expense name must not be null")
+    @Size(min = 3, message = "Expense name at least 3 characters")
     private String name;
     private String description;
     @Column(name = "expense_amount")
