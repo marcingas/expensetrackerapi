@@ -53,7 +53,7 @@ return new ResponseEntity<ErrorObject>(errorObject, HttpStatus.NOT_FOUND);
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatusCode status, WebRequest request) {
         Map<String, Object> body= new HashMap<String, Object>();
         body.put("timestamp", new Date());
-        body.put("statusCode ", HttpStatus.BAD_REQUEST);
+        body.put("statusCode ", HttpStatus.BAD_REQUEST.value());
         List<String> errors =  ex.getBindingResult()
                 .getFieldErrors()
                 .stream()
